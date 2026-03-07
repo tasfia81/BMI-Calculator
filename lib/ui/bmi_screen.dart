@@ -66,6 +66,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BmiScreen extends StatefulWidget {
   const BmiScreen({super.key});
@@ -101,8 +102,8 @@ class _BmiScreenState extends State<BmiScreen> {
   }
 
   Color get categoryColor {
-    if (bmi < 18.5) return Colors.orange;
-    if (bmi < 24.9) return Colors.green;
+    if (bmi < 18.5) return Colors.purple;
+    if (bmi < 24.9) return Colors.pink;
     if (bmi < 29.9) return Colors.deepOrange;
     return Colors.red;
   }
@@ -110,29 +111,30 @@ class _BmiScreenState extends State<BmiScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F6FA),
+      //backgroundColor:  Color(0xFFF4F6FA),
+      backgroundColor: Colors.indigo,
       appBar: AppBar(
-        title: const Text("BMI Calculator",style: TextStyle(
+        title: Text("BMI Calculator",style: TextStyle(
           color: Colors.white
         ),),
         centerTitle: true,
         backgroundColor: Colors.indigo,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16.w),
         child: Column(
           children: [
-            /// Toggle Card
+            ///-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Toggle Card -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
             Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding:  EdgeInsets.symmetric(horizontal: 20.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("CM"),
+                     Text("CM"),
                     Switch(
                       value: isCm,
                       activeColor: Colors.indigo,
@@ -142,32 +144,32 @@ class _BmiScreenState extends State<BmiScreen> {
                         });
                       },
                     ),
-                    const Text("Feet"),
+                     Text("Feet"),
                   ],
                 ),
               ),
             ),
 
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
 
-            /// Height Card
+            ///-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Height Card -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(16.w),
                 child: Column(
                   children: [
-                    const Text(
+                    Text(
                       "Height",
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
                     if (isCm) ...[
                       Text("${heightCm.toInt()} cm",
-                          style: const TextStyle(fontSize: 16)),
+                          style: TextStyle(fontSize: 16.sp)),
                       Slider(
                         value: heightCm,
                         min: 100,
@@ -182,7 +184,7 @@ class _BmiScreenState extends State<BmiScreen> {
                     ] else ...[
                       Text(
                         "${heightFeet.toInt()} ft ${heightInch.toInt()} inch",
-                        style: const TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: 16.sp),
                       ),
                       Slider(
                         value: heightFeet,
@@ -214,25 +216,25 @@ class _BmiScreenState extends State<BmiScreen> {
               ),
             ),
 
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
 
-            /// Weight Card
+            ///=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Weight Card =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(16.w),
                 child: Column(
                   children: [
-                    const Text(
+                      Text(
                       "Weight",
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Text("${weight.toInt()} kg",
-                        style: const TextStyle(fontSize: 16)),
+                        style: TextStyle(fontSize: 16.sp)),
                     Slider(
                       value: weight,
                       min: 30,
@@ -249,38 +251,38 @@ class _BmiScreenState extends State<BmiScreen> {
               ),
             ),
 
-            const SizedBox(height: 20),
+             SizedBox(height: 20.h),
 
-            /// Result Card
+            ///-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Result Card -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
             Card(
               elevation: 6,
               color: Colors.white,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(20.r),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(20),
+                padding:  EdgeInsets.all(20.w),
                 child: Column(
                   children: [
-                    const Text(
+                      Text(
                       "Your BMI",
                       style:
-                      TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Text(
                       bmi.toStringAsFixed(1),
-                      style: const TextStyle(
-                        fontSize: 36,
+                      style: TextStyle(
+                        fontSize: 36.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.indigo,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8.h),
                     Text(
                       category,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.w600,
                         color: categoryColor,
                       ),
